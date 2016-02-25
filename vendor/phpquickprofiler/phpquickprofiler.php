@@ -160,6 +160,27 @@ class PhpQuickProfiler {
 		return $query;
 	}
 
+
+	/*-------------------------------------------
+	     PARSER DATA FOR ENTIRE PAGE LOAD
+	-------------------------------------------*/
+
+	public function gatherParserData() {
+		$parserTotals = array();
+		
+		if(class_exists('\\Parser\View_Twig')){
+			$parserTotals = \Parser\View_Twig::profile();
+		}
+		
+		if( ! (bool) count($parserTotals)) return;
+		
+		$parserTotals['total'] = $this->getReadableTime($parserTotals['total']*1000);
+		$parserTotals['memory_usage'] = $this->getReadableFileSize($parserTotals['memory_usage']);
+		$parserTotals['memory_peak_usage'] = $this->getReadableFileSize($parserTotals['memory_peak_usage']);
+		
+		$this->output['parserTotals'] = $parserTotals;
+	}
+
 	/*-------------------------------------------
 	     SPEED DATA FOR ENTIRE PAGE LOAD
 	-------------------------------------------*/
@@ -225,6 +246,7 @@ class PhpQuickProfiler {
 		$this->gatherFileData();
 		$this->gatherMemoryData();
 		$this->gatherQueryData();
+		$this->gatherParserData();
 		$this->gatherSpeedData();
 
 		if ($return)
