@@ -1,13 +1,17 @@
 {
-	"name": "fuel/core",
+	"name": "feldsam-inc/fuel-core",
 	"description" : "FuelPHP 1.x Core",
 	"type": "fuel-package",
-	"homepage": "https://github.com/fuel/core",
+	"homepage": "https://github.com/FELDSAM-INC/fuel-core",
 	"license": "MIT",
 	"authors": [
 		{
 			"name": "FuelPHP Development Team",
 			"email": "team@fuelphp.com"
+		},
+		{
+    		"name": "Kristian Feldsam",
+    		"email": "feldsam@gmail.com"
 		}
 	],
 	"require": {
