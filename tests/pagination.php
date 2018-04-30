@@ -602,7 +602,7 @@ class Test_Pagination extends TestCase
 		// set base_url
 		Config::set('base_url', 'http://docs.fuelphp.com/');
 		// set Request::$main & $active
-		$this->set_request('/');
+    $this->set_request('/?foo=bar&fuel[]=php1&fuel[]=php2&');
 
 		$this->set_query_string_config();
 		$this->config['pagination_url'] = null;
@@ -613,7 +613,7 @@ class Test_Pagination extends TestCase
 		$_make_link->setAccessible(true);
 
 		$test = $_make_link->invoke($pagination, 1);
-		$expected = 'http://docs.fuelphp.com/?p=1';
+    $expected = 'http://docs.fuelphp.com/?foo=bar&amp;fuel%5B0%5D=php1&amp;fuel%5B1%5D=php2&amp;p=1';
 		$this->assertEquals($expected, $test);
 	}
 
