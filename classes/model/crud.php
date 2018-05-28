@@ -90,6 +90,16 @@ class Model_Crud extends \Model implements \Iterator, \ArrayAccess, \Serializabl
 		return new static($data);
 	}
 
+  /**
+   * Creates new DB query with prepared select, from and as_object settings
+   *
+   * @return object DB
+   */
+  public static function query()
+  {
+    return DB::select_array(static::$_properties)->from(static::$_table_name)->as_object(static::class);
+  }
+
 	/**
 	 * Finds a row with the given primary key value.
 	 *
