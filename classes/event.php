@@ -43,7 +43,7 @@ abstract class Event
 	 *
 	 * @param   string  $name    instance name
 	 * @param   array   $events  events array
-	 * @return  object  Event_Instance object
+	 * @return  Event_Instance
 	 */
 	public static function instance($name = 'fuelphp', array $events = array())
 	{

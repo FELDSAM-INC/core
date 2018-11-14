@@ -199,7 +199,7 @@ class Session
 	 * create or return the driver instance
 	 *
 	 * @param	void
-	 * @return	\Session_Driver object
+	 * @return	Session_Driver
 	 */
 	public static function instance($instance = null)
 	{
